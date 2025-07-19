@@ -16,5 +16,7 @@ require __DIR__.'/../vendor/autoload.php';
 // Bootstrap Laravel and handle the request...
 /** @var Application $app */
 $app = require_once __DIR__.'/../bootstrap/app.php';
+// Tambahkan di baris paling atas file public/index.php
+ini_set('memory_limit', '512M');
 
 $app->handleRequest(Request::capture());

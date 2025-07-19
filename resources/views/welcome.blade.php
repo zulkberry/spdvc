@@ -25,9 +25,9 @@
                 <a href="#" class="hover:text-[var(--spd-orange)]">BERANDA</a>
                 <a href="/tentang-kami" class="hover:text-[var(--spd-orange)]">TENTANG KAMI</a>
                 <a href="/program" class="hover:text-[var(--spd-orange)]">PROGRAM</a>
-                <a href="#" class="hover:text-[var(--spd-orange)]">BERITA</a>
-                <a href="#" class="hover:text-[var(--spd-orange)]">KONTAK</a>
-                <a href="#" class="hover:text-[var(--spd-orange)]">LOGIN</a>
+                <a href="/berita" class="hover:text-[var(--spd-orange)]">BERITA</a>
+                <a href="/kontak" class="hover:text-[var(--spd-orange)]">KONTAK</a>
+                <a href="/login" class="hover:text-[var(--spd-orange)]">LOGIN</a>
             </nav>
 
         </div>

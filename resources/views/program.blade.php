@@ -1,64 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- Konten Tentang Kami --}}
-    <section class="max-w-4xl mx-auto text-center space-y-8">
-        <div>
-            <div class="relative inline-block">
-                <img src="{{ asset('images/Shape 1.webp') }}" class="h-[32px] md:h-[40px]" alt="Visi">
-                <span class="absolute inset-0 flex items-center justify-center text-white font-extrabold italic uppercase text-xl md:text-3xl">Visi</span>
-            </div>
-            <h2 class="text-2xl md:text-4xl font-montserrat font-extrabold italic mt-2">SPD Vocational Centre</h2>
-            <p class="mt-4 text-lg leading-relaxed">
-                Menjadi pusat pengembangan vokasi unggulan yang menghubungkan dunia pendidikan dengan dunia industri melalui pembelajaran berbasis praktik, pelatihan keahlian, dan pengembangan karir yang berkelanjutan.
-            </p>
+<section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="text-left mb-8">
+        <div class="flex items-center space-x-2">
+            <img src="{{ asset('images/Shape 2.webp') }}" class="h-10" alt="icon" />
+            <h2 class="text-2xl md:text-3xl font-bold italic">
+                Program Kerja Sama <span class="font-semibold">SPD Vocational Centre</span> <span class="font-light italic">(SPDVC)</span>
+            </h2>
         </div>
-
-        <div>
-            <div class="relative inline-block">
-                <img src="{{ asset('images/Shape 1.webp') }}" class="h-[32px] md:h-[40px]" alt="Misi">
-                <span class="absolute inset-0 flex items-center justify-center text-white font-extrabold italic uppercase text-xl md:text-3xl">Misi</span>
-            </div>
-            <h2 class="text-2xl md:text-4xl font-extrabold italic mt-2">SPD Vocational Centre</h2>
-            <ol class="mt-4 text-left space-y-2 text-lg list-decimal list-inside">
-                <li><strong>Menyelenggarakan program teaching factory</strong> yang relevan dengan kebutuhan industri modern.</li>
-                <li><strong>Membuka akses magang berkualitas</strong> bagi siswa/mahasiswa vokasi dengan sistem yang terstruktur dan terukur.</li>
-                <li><strong>Menyediakan layanan asesmen dan pengembangan karir</strong> melalui tes psikologi dan penyaluran kerja.</li>
-                <li><strong>Mengembangkan pusat pelatihan dan sertifikasi</strong> yang meningkatkan daya saing lulusan vokasi.</li>
-                <li><strong>Membangun kemitraan strategis</strong> dengan sekolah, industri, dan lembaga sertifikasi untuk memperkuat ekosistem vokasi di Indonesia.</li>
-            </ol>
-        </div>
-    </section>
-
-    <section class="max-w-4xl mx-auto text-left mt-16 space-y-8">
-        <div class="text-center">
-            <div class="relative inline-block">
-                <img src="{{ asset('images/Shape 1.webp') }}" class="h-[32px] md:h-[40px]" alt="Sejarah">
-                <span class="absolute inset-0 flex items-center justify-center text-white font-extrabold italic uppercase text-xl md:text-3xl">Sejarah</span>
-            </div>
-            <h2 class="text-2xl md:text-4xl font-extrabold italic mt-2">& Latar Belakang</h2>
-        </div>
-
-        <p class="text-lg leading-relaxed text-justify">
-            <strong>SPD Vocational Centre</strong> lahir dari kebutuhan untuk menjembatani kesenjangan antara kurikulum vokasi dengan tuntutan dunia kerja yang dinamis dan kompetitif. Berawal dari kolaborasi SPD Speedometer dengan beberapa SMK dan Universitas sejak tahun 2017, kami menyadari bahwa:
+        <p class="mt-4 text-lg leading-relaxed text-gray-800">
+            SPD Vocational Centre menawarkan empat pilar program utama yang dirancang untuk
+            memperkuat sinergi antara SMK/Universitas Vokasi dan dunia industri. Program ini membantu
+            siswa/mahasiswa mengembangkan kompetensi nyata, kesiapan kerja, dan daya saing di era
+            industri modern.
         </p>
+    </div>
 
-        <ol class="text-lg space-y-2 list-decimal list-inside">
-            <li>Banyak siswa SMK/ mahasiswa vokasi yang <strong>belum siap kerja</strong> meskipun memiliki dasar teori kuat.</li>
-            <li>Industri membutuhkan <strong>lulusan vokasi yang siap pakai</strong>, tangguh, dan adaptif.</li>
-            <li>Sekolah membutuhkan mitra industri untuk <strong>teaching factory, magang, dan pelatihan kompetensi</strong>.</li>
-        </ol>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        <a href="{{ route('program.teaching-factory') }}" class="block bg-white shadow-xl rounded-xl p-6 text-center hover:shadow-orange-200 transition hover:scale-105 duration-200">
+            <img src="{{ asset('images/Icon 1.webp') }}" alt="Teaching Factory" class="h-14 mx-auto">
+            <h3 class="font-bold text-md mt-3">Teaching Factory</h3>
+            <p class="text-sm text-gray-600">Pembelajaran Berbasis Industri</p>
+        </a>
 
-        <p class="text-lg leading-relaxed text-justify">
-            Sejak itulah, SPD Vocational Centre dikembangkan sebagai wadah formal untuk:
-        </p>
+        <!-- Card 2 -->
+        <a href="{{ route('program.magang-bersertifikat') }}" class="block bg-white shadow-xl rounded-xl p-6 text-center hover:shadow-orange-200 transition hover:scale-105 duration-200">
+            <img src="{{ asset('images/Icon 2.webp') }}" alt="Magang Bersertifikat" class="h-14 mx-auto">
+            <h3 class="font-bold text-md mt-3">Magang Bersertifikat</h3>
+            <p class="text-sm text-gray-600">Pengalaman Nyata Dunia Kerja</p>
+        </a>
 
-        <ol class="text-lg space-y-2 list-decimal list-inside">
-            <li>Menyusun kurikulum kolaboratif</li>
-            <li>Memberi ruang praktik nyata bagi siswa dan mahasiswa</li>
-            <li>Menyediakan pelatihan dan tes karier berbasis psikologi industri organisasi</li>
-            <li>Menyalurkan lulusan ke dunia kerja sesuai potensi dan minat mereka</li>
-        </ol>
-    </section>
+        <!-- Card 3 -->
+        <a href="{{ route('program.career-development') }}" class="block bg-white shadow-xl rounded-xl p-6 text-center hover:shadow-orange-200 transition hover:scale-105 duration-200">
+            <img src="{{ asset('images/Icon 3.webp') }}" alt="Career Development" class="h-14 mx-auto">
+            <h3 class="font-bold text-md mt-3">Career<br />Development</h3>
+            <p class="text-sm text-gray-600">Tes Psikologi & Penyaluran Kerja</p>
+        </a>
 
+        <!-- Card 4 -->
+        <a href="{{ route('program.training') }}" class="block bg-white shadow-xl rounded-xl p-6 text-center hover:shadow-orange-200 transition hover:scale-105 duration-200">
+            <img src="{{ asset('images/Icon 4.webp') }}" alt="Training" class="h-14 mx-auto">
+            <h3 class="font-bold text-md mt-3">Training<br />dan Sertifikasi</h3>
+            <p class="text-sm text-gray-600">Pelatihan Skill & Sertifikasi</p>
+        </a>
+    </div>
+</section>
 @endsection

@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SPD Vocational Centre</title>
+    <title>@yield('title', 'SPD Vocational Centre')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-white text-[#111827] font-sans">
+<body class="bg-white text-[#111827] font-sans flex flex-col min-h-screen">
 
-    {{-- HEADER --}}
+    {{-- ======= HEADER ======= --}}
     <header class="bg-[#121212] text-white">
-        <div class="max-w-9xl mx-auto flex items-center justify-between px-4 py-3">
-            
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
             <!-- Logo kiri -->
             <img src="{{ asset('images/Logo SPDVC.webp') }}" alt="SPDVC" class="h-8 md:h-10">
 
@@ -26,14 +25,14 @@
         </div>
     </header>
 
-    {{-- CONTENT --}}
-    <main class="px-4 py-8">
+    {{-- ======= CONTENT ======= --}}
+    <main class="flex-grow px-4 py-8">
         @yield('content')
     </main>
 
-    {{-- FOOTER (Opsional) --}}
-    <footer class="text-center text-sm py-6 text-gray-500">
-        &copy; {{ date('Y') }} SPD Vocational Centre
+    {{-- ======= FOOTER ======= --}}
+    <footer class="bg-[#121212] text-white text-center py-4">
+        <p>&copy; 2025 SPD Vocational Centre. All rights reserved.</p>
     </footer>
 
 </body>

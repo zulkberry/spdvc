@@ -10,7 +10,8 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+{
+    if (!Schema::hasTable('teaching_factories')) {
         Schema::create('teaching_factories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('instansi_id');
@@ -20,11 +21,10 @@ return new class extends Migration
             $table->text('jadwal')->nullable();
             $table->text('evaluasi_terakhir')->nullable();
             $table->timestamps();
-
-            // Foreign key manual, karena id di sekolah_univ bukan 'id' tapi 'id_instansi'
-            $table->foreign('instansi_id')->references('id_instansi')->on('sekolah_univ')->onDelete('cascade');
         });
     }
+}
+
 
     /**
      * Reverse the migrations.

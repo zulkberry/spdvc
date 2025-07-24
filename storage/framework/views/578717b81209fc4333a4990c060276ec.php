@@ -2,6 +2,7 @@
     use Filament\Support\Enums\Alignment;
     use Filament\Support\Facades\FilamentView;
 
+    $id = $getId();
     $imageCropAspectRatio = $getImageCropAspectRatio();
     $imageResizeTargetHeight = $getImageResizeTargetHeight();
     $imageResizeTargetWidth = $getImageResizeTargetWidth();
@@ -27,7 +28,7 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\DynamicComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['field' => $field,'label-sr-only' => $isLabelHidden()]); ?>
+<?php $component->withAttributes(['field' => $field,'label-tag' => 'div']); ?>
     <div
         <?php if(FilamentView::hasSpaMode()): ?>
             x-load="visible || event (ax-modal-opened)"
@@ -65,6 +66,7 @@
                     isDownloadable: <?php echo \Illuminate\Support\Js::from($isDownloadable())->toHtml() ?>,
                     isMultiple: <?php echo \Illuminate\Support\Js::from($isMultiple())->toHtml() ?>,
                     isOpenable: <?php echo \Illuminate\Support\Js::from($isOpenable())->toHtml() ?>,
+                    isPasteable: <?php echo \Illuminate\Support\Js::from($isPasteable())->toHtml() ?>,
                     isPreviewable: <?php echo \Illuminate\Support\Js::from($isPreviewable())->toHtml() ?>,
                     isReorderable: <?php echo \Illuminate\Support\Js::from($isReorderable())->toHtml() ?>,
                     itemPanelAspectRatio: <?php echo \Illuminate\Support\Js::from($getItemPanelAspectRatio())->toHtml() ?>,
@@ -109,7 +111,9 @@
         wire:ignore
         <?php echo e($attributes
                 ->merge([
-                    'id' => $getId(),
+                    'aria-labelledby' => "{$id}-label",
+                    'id' => $id,
+                    'role' => 'group',
                 ], escape: false)
                 ->merge($getExtraAttributes(), escape: false)
                 ->merge($getExtraAlpineAttributes(), escape: false)
@@ -135,6 +139,7 @@
                 x-ref="input"
                 <?php echo e($getExtraInputAttributeBag()
                         ->merge([
+                            'aria-labelledby' => "{$id}-label",
                             'disabled' => $isDisabled,
                             'multiple' => $isMultiple(),
                             'type' => 'file',

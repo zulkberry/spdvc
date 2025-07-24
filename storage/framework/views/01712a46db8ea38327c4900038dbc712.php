@@ -67,15 +67,15 @@ unset($__defined_vars); ?>
 <div
     x-data="{
         toggle: function (event) {
-            $refs.panel.toggle(event)
+            $refs.panel?.toggle(event)
         },
 
         open: function (event) {
-            $refs.panel.open(event)
+            $refs.panel?.open(event)
         },
 
         close: function (event) {
-            $refs.panel.close(event)
+            $refs.panel?.close(event)
         },
     }"
     <?php echo e($attributes->class(['fi-dropdown'])); ?>

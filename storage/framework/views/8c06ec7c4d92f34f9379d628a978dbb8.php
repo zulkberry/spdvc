@@ -22,6 +22,7 @@ $__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames(([
     'labelPrefix' => null,
     'labelSrOnly' => null,
     'labelSuffix' => null,
+    'labelTag' => 'label',
     'required' => null,
     'statePath' => null,
 ]));
@@ -56,6 +57,7 @@ foreach (array_filter(([
     'labelPrefix' => null,
     'labelSrOnly' => null,
     'labelSuffix' => null,
+    'labelTag' => 'label',
     'required' => null,
     'statePath' => null,
 ]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
@@ -104,10 +106,18 @@ unset($__defined_vars); ?>
 
 >
     <!--[if BLOCK]><![endif]--><?php if($label && $labelSrOnly): ?>
-        <label for="<?php echo e($id); ?>" class="sr-only">
+        <<?php echo e($labelTag); ?>
+
+            <?php if($labelTag === 'label'): ?>
+                for="<?php echo e($id); ?>"
+            <?php else: ?>
+                id="<?php echo e($id); ?>-label"
+            <?php endif; ?>
+            class="sr-only"
+        >
             <?php echo e($label); ?>
 
-        </label>
+        </<?php echo e($labelTag); ?>>
     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
     <div
@@ -133,14 +143,14 @@ unset($__defined_vars); ?>
                 <!--[if BLOCK]><![endif]--><?php if($label && (! $labelSrOnly)): ?>
                     <?php if (isset($component)) { $__componentOriginalce0c3abfe32d61e042620ba43c1aa075 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalce0c3abfe32d61e042620ba43c1aa075 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament-forms::components.field-wrapper.label','data' => ['for' => $id,'disabled' => $isDisabled,'prefix' => $labelPrefix,'required' => $required,'suffix' => $labelSuffix]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament-forms::components.field-wrapper.label','data' => ['for' => ($labelTag === 'label') ? $id : null,'id' => ($labelTag === 'label') ? null : ($id . '-label'),'tag' => $labelTag,'disabled' => $isDisabled,'prefix' => $labelPrefix,'required' => $required,'suffix' => $labelSuffix]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('filament-forms::field-wrapper.label'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['for' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($id),'disabled' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($isDisabled),'prefix' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($labelPrefix),'required' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($required),'suffix' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($labelSuffix)]); ?>
+<?php $component->withAttributes(['for' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(($labelTag === 'label') ? $id : null),'id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(($labelTag === 'label') ? null : ($id . '-label')),'tag' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($labelTag),'disabled' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($isDisabled),'prefix' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($labelPrefix),'required' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($required),'suffix' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($labelSuffix)]); ?>
                         <?php echo e($label); ?>
 
                      <?php echo $__env->renderComponent(); ?>

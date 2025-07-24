@@ -6,6 +6,7 @@ $__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames(([
     'prefix' => null,
     'required' => false,
     'suffix' => null,
+    'tag' => 'label',
 ]));
 
 foreach ($attributes->all() as $__key => $__value) {
@@ -26,6 +27,7 @@ foreach (array_filter(([
     'prefix' => null,
     'required' => false,
     'suffix' => null,
+    'tag' => 'label',
 ]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 }
@@ -38,7 +40,8 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars); ?>
 
-<label
+<<?php echo e($tag); ?>
+
     <?php echo e($attributes->class(['fi-fo-field-wrp-label inline-flex items-center gap-x-3'])); ?>
 
 >
@@ -53,5 +56,5 @@ unset($__defined_vars); ?>
 
     <?php echo e($suffix); ?>
 
-</label>
+</<?php echo e($tag); ?>>
 <?php /**PATH C:\laragon\www\web-spd\spdvsc\vendor\filament\forms\resources\views/components/field-wrapper/label.blade.php ENDPATH**/ ?>

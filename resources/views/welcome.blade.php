@@ -5,6 +5,7 @@
     <title>SPDVC - Beranda</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
    <style>
         :root {
             --spd-orange: #ff7408;
@@ -185,42 +186,78 @@
 </div>
 </section>
 
-<!-- Testimoni Section -->
 <section class="bg-gray-100 py-24 px-4">
-    <div class="max-w-6xl mx-auto text-start">
-        <h2 class="text-2xl md:text-4xl font-montserrat font-bold italic text-black mb-6">
+    <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-2xl md:text-4xl font-montserrat font-bold italic text-black mb-10">
             <img src="{{ asset('images/Shape 2.webp') }}" alt="" class="inline-block w-8 mr-2 align-middle">
-            <h>Testimoni dari Sekolah, Universitas, dan Industri</h>
+            Testimoni dari Sekolah, Universitas, dan Industri
         </h2>
 
+        @php
+            $testimonis = [
+                ['gambar' => asset('images/pe.png'), 'bintang' => 5, 'pesan' => 'Sejak bekerja sama dengan SPD Vocational Centre, siswa kami tidak hanya belajar praktik, tapi juga membangun mental kerja yang kuat.', 'nama' => 'Kepala Sekolah xxx'],
+                ['gambar' => asset('images/pepe.png'), 'bintang' => 4, 'pesan' => 'Kami sangat terbantu dengan lulusan magang dari SPD Vocational Centre. Mereka disiplin, cepat belajar, dan beberapa langsung kami rekrut setelah lulus.', 'nama' => 'Kaprodi Universitas xxx'],
+                ['gambar' => asset('images/pepepe.png'), 'bintang' => 3, 'pesan' => 'Program projek akhir dari SPD membuat siswa punya karya nyata. Ini penting untuk portofolio mereka saat lulus nanti.', 'nama' => 'Guru SMK xxx'],
+                ['gambar' => asset('images/re.png'), 'bintang' => 5, 'pesan' => 'Sejak bekerja sama dengan SPD Vocational Centre, siswa kami tidak hanya belajar praktik, tapi juga membangun mental kerja yang kuat.', 'nama' => 'Kepala Sekolah xxx'],
+                ['gambar' => asset('images/rere.png'), 'bintang' => 4, 'pesan' => 'Kami sangat terbantu dengan lulusan magang dari SPD Vocational Centre. Mereka disiplin, cepat belajar, dan beberapa langsung kami rekrut setelah lulus.', 'nama' => 'Kaprodi Universitas xxx'],
+                ['gambar' => asset('images/pr.png'), 'bintang' => 3, 'pesan' => 'Program projek akhir dari SPD membuat siswa punya karya nyata. Ini penting untuk portofolio mereka saat lulus nanti.', 'nama' => 'Guru SMK xxx'],
+            ];
+        @endphp
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center min-h-[340px]">
-                <img src="https://img.icons8.com/ios-filled/50/cccccc/user.png" alt="Profile" class="w-16 h-16 rounded-full mb-4">
-                <div class="text-yellow-400 mb-2">★★★★★</div>
-                <p class="italic mb-4 text-sm">“Sejak bekerja sama dengan SPD Vocational Centre, siswa kami tidak hanya belajar praktik, tapi juga membangun mental kerja yang kuat.”</p>
-                <p class="font-semibold text-sm text-gray-700 mt-auto">- Kepala Sekolah xxx -</p>
+        <div class="relative w-full overflow-hidden">
+            <div id="carousel-items" class="flex transition-transform duration-700 ease-in-out w-full">
+                @foreach (array_chunk($testimonis, 3) as $chunk)
+                    <div class="flex w-full shrink-0 justify-center">
+                        @foreach ($chunk as $t)
+                            <div class="w-full sm:w-1/2 lg:w-1/3 px-2 box-border">
+                                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center min-h-[340px]">
+                                    <img src="{{ $t['gambar'] }}" alt="Profile" class="w-16 h-16 rounded-full mb-4">
+                                    <div class="text-yellow-400 mb-2">
+                                        @for ($i = 0; $i < $t['bintang']; $i++) ★ @endfor
+                                    </div>
+                                    <p class="italic mb-4 text-sm text-center">“{{ $t['pesan'] }}”</p>
+                                    <p class="font-semibold text-sm text-gray-700 mt-auto">- {{ $t['nama'] }} -</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
             </div>
 
-            <!-- Card 2 -->
-            <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center min-h-[340px]">
-                <img src="https://img.icons8.com/ios-filled/50/cccccc/user.png" alt="Profile" class="w-16 h-16 rounded-full mb-4">
-                <div class="text-yellow-400 mb-2">★★★★★</div>
-                <p class="italic mb-4 text-sm">“Kami sangat terbantu dengan lulusan magang dari SPD Vocational Centre. Mereka disiplin, cepat belajar, dan beberapa langsung kami rekrut setelah lulus.”</p>
-                <p class="font-semibold text-sm text-gray-700 mt-auto">- Kaprodi Universitas xxx -</p>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center min-h-[340px]">
-                <img src="https://img.icons8.com/ios-filled/50/cccccc/user.png" alt="Profile" class="w-16 h-16 rounded-full mb-4">
-                <div class="text-yellow-400 mb-2">★★★★★</div>
-                <p class="italic mb-4 text-sm">“Program projek akhir dari SPD membuat siswa punya karya nyata. Ini penting untuk portofolio mereka saat lulus nanti.”</p>
-                <p class="font-semibold text-sm text-gray-700 mt-auto">- Guru SMK xxx -</p>
+            <!-- Tombol Navigasi -->
+            <div class="flex justify-center gap-4 mt-6">
+                <button onclick="prevSlide()" class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded shadow">←</button>
+                <button onclick="nextSlide()" class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded shadow">→</button>
             </div>
         </div>
     </div>
 </section>
+
+
+<!-- JS Carousel -->
+<script>
+    const carousel = document.getElementById('carousel-items');
+    const totalSlides = carousel.children.length;
+    let currentSlide = 0;
+
+    function updateCarousel() {
+        const offset = currentSlide * 100;
+        carousel.style.transform = `translateX(-${offset}%)`;
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    }
+
+    // Kalau mau auto-slide, aktifkan ini:
+    // setInterval(nextSlide, 10000);
+</script>
 
 
     <!-- Footer -->

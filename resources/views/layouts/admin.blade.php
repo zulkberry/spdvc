@@ -24,35 +24,35 @@
     <div class="flex min-h-screen">
        {{-- Sidebar --}}
         <aside class="w-64 bg-[#f3f3f3] p-6">
-            <ul class="space-y-6 font-bold text-gray-800 text-xl"> <!-- Ubah text-sm jadi text-xl -->
+            <ul class="space-y-6 font-bold text-gray-800 text-xl"> <!-- Ubah text-sm jadi text-adminpan -->
 
                 <li>
-                    <a href="{{ route('admin.laporan') }}"
-                    class="flex items-center gap-3 {{ request()->routeIs('admin.laporan') ? 'text-orange-500' : 'hover:text-orange-500' }}">
+                    <a href="{{ route('admins.laporan') }}"
+                    class="flex items-center gap-3 {{ request()->routeIs('admins.laporan') ? 'text-orange-500' : 'hover:text-orange-500' }}">
                         <img src="{{ asset('images/Icon 12.webp') }}" alt="SPDVC" class="h-5">
                         LAPORAN
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('admin.progres') }}"
-                    class="flex items-center gap-3 {{ request()->routeIs('admin.progres') ? 'text-orange-500' : 'hover:text-orange-500' }}">
+                    <a href="{{ route('admins.progres') }}"
+                    class="flex items-center gap-3 {{ request()->routeIs('admins.progres') ? 'text-orange-500' : 'hover:text-orange-500' }}">
                     <img src="{{ asset('images/Icon 13.webp') }}" alt="SPDVC" class="h-5">
                         PROGRES
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('admin.jadwal') }}"
-                    class="flex items-center gap-3 {{ request()->routeIs('admin.jadwal') ? 'text-orange-500' : 'hover:text-orange-500' }}">
+                    <a href="{{ route('admins.jadwal') }}"
+                    class="flex items-center gap-3 {{ request()->routeIs('admins.jadwal') ? 'text-orange-500' : 'hover:text-orange-500' }}">
                     <img src="{{ asset('images/Icon 14.webp') }}" alt="SPDVC" class="h-5">
                         JADWAL
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('admin.data') }}"
-                    class="flex items-center gap-3 {{ request()->routeIs('admin.data') ? 'text-orange-500' : 'hover:text-orange-500' }}">
+                    <a href="{{ route('admins.data') }}"
+                    class="flex items-center gap-3 {{ request()->routeIs('admins.data') ? 'text-orange-500' : 'hover:text-orange-500' }}">
                     <img src="{{ asset('images/Icon 15.webp') }}" alt="SPDVC" class="h-5">
                         DATA
                     </a>

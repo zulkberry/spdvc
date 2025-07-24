@@ -1,5 +1,7 @@
 <?php
     use Filament\Support\Enums\MaxWidth;
+
+    $livewire ??= null;
 ?>
 
 <?php if (isset($component)) { $__componentOriginale960ae7ad1b1ce9e3596e483505fadc9 = $component; } ?>
@@ -136,7 +138,7 @@ if (isset($__slots)) unset($__slots);
             </main>
         </div>
 
-        <?php echo e(\Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::FOOTER, scopes: $livewire->getRenderHookScopes())); ?>
+        <?php echo e(\Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::FOOTER, scopes: $livewire?->getRenderHookScopes())); ?>
 
     </div>
  <?php echo $__env->renderComponent(); ?>

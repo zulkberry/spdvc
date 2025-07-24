@@ -24,7 +24,7 @@
     $filterIndicators = $getFilterIndicators();
     $hasColumnGroups = $hasColumnGroups();
     $hasColumnsLayout = $hasColumnsLayout();
-    $hasSummary = $hasSummary();
+    $hasSummary = $hasSummary($this->getAllTableSummaryQuery());
     $header = $getHeader();
     $headerActions = array_filter(
         $getHeaderActions(),
@@ -1046,14 +1046,14 @@
                                         <!--[if BLOCK]><![endif]--><?php if($recordHasActions): ?>
                                             <?php if (isset($component)) { $__componentOriginal32a2358b99de73a2a27625c392d6fe38 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal32a2358b99de73a2a27625c392d6fe38 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament-tables::components.actions','data' => ['actions' => $actions,'alignment' => (! $contentGrid) ? 'start md:end' : Alignment::Start,'record' => $record,'wrap' => '-sm','class' => $recordActionsClasses]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament-tables::components.actions','data' => ['actions' => $actions,'alignment' => (! $contentGrid) ? 'start md:end' : $actionsAlignment ?? Alignment::Start,'record' => $record,'wrap' => '-sm','class' => $recordActionsClasses]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('filament-tables::actions'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['actions' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($actions),'alignment' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute((! $contentGrid) ? 'start md:end' : Alignment::Start),'record' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($record),'wrap' => '-sm','class' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($recordActionsClasses)]); ?>
+<?php $component->withAttributes(['actions' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($actions),'alignment' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute((! $contentGrid) ? 'start md:end' : $actionsAlignment ?? Alignment::Start),'record' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($record),'wrap' => '-sm','class' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($recordActionsClasses)]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal32a2358b99de73a2a27625c392d6fe38)): ?>
@@ -2390,7 +2390,28 @@
 <?php unset($__componentOriginalce46e569391542b4e56f032ac7380f79); ?>
 <?php endif; ?>
             <?php elseif($records === null): ?>
-                <div class="h-32"></div>
+                <div class="flex h-32 items-center justify-center">
+                    <?php if (isset($component)) { $__componentOriginalbef7c2371a870b1887ec3741fe311a10 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbef7c2371a870b1887ec3741fe311a10 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament::components.loading-indicator','data' => ['class' => 'h-8 w-8']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('filament::loading-indicator'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['class' => 'h-8 w-8']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalbef7c2371a870b1887ec3741fe311a10)): ?>
+<?php $attributes = $__attributesOriginalbef7c2371a870b1887ec3741fe311a10; ?>
+<?php unset($__attributesOriginalbef7c2371a870b1887ec3741fe311a10); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalbef7c2371a870b1887ec3741fe311a10)): ?>
+<?php $component = $__componentOriginalbef7c2371a870b1887ec3741fe311a10; ?>
+<?php unset($__componentOriginalbef7c2371a870b1887ec3741fe311a10); ?>
+<?php endif; ?>
+                </div>
             <?php elseif($emptyState = $getEmptyState()): ?>
                 <?php echo e($emptyState); ?>
 

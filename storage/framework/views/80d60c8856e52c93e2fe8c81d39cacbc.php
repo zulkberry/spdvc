@@ -62,6 +62,11 @@
                     x-on:resize.window="resize()"
                 <?php endif; ?>
                 x-model="state"
+                <?php if($isGrammarlyDisabled()): ?>
+                    data-gramm="false"
+                    data-gramm_editor="false"
+                    data-enable-grammarly="false"
+                <?php endif; ?>
                 <?php echo e($getExtraAlpineAttributeBag()); ?>
 
                 <?php echo e($getExtraInputAttributeBag()

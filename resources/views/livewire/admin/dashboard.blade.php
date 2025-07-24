@@ -1,4 +1,4 @@
-{{-- resources/views/admin/dashboard.blade.php --}}
+{{-- resources/views/Admins/dashboard.blade.php --}}
 @extends('layouts.admin') {{-- Sesuaikan jika layout kamu memang bernama layouts/admin.blade.php --}}
 
 @section('content')

@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-3xl mx-auto px-4 py-6 text-justify text-[15px] leading-relaxed">
-    <a href="{{ route('program.index') }}">← Kembali</a>  
+<div class="max-w-6xl mx-auto px-4 py-6 text-justify text-[15px] leading-relaxed">
+    <div class="absolute top-6 left-6">
+        <a href="{{ route('program.index') }}" class="text-black hover:underline">← Kembali</a>
+    </div>  
 
     <!-- Judul Utama -->
     <div class="mb-8 flex justify-center">

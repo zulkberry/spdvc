@@ -525,5 +525,101 @@ unset($__defined_vars); ?>
 <?php endif; ?>
             </div>
         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-    </button><?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+    </button><?php elseif($tag === 'div'): ?>
+    <div
+        role="button"
+        <?php if($keyBindings || $hasTooltip): ?>
+            x-data="{}"
+        <?php endif; ?>
+        <?php if($keyBindings): ?>
+            x-bind:id="$id('key-bindings')"
+            x-mousetrap.global.<?php echo e(collect($keyBindings)->map(fn (string $keyBinding): string => str_replace('+', '-', $keyBinding))->implode('.')); ?>="document.getElementById($el.id).click()"
+        <?php endif; ?>
+        <?php if($hasTooltip): ?>
+            x-tooltip="{
+                content: <?php echo \Illuminate\Support\Js::from($tooltip)->toHtml() ?>,
+                theme: $store.theme,
+            }"
+        <?php endif; ?>
+        <?php echo e($attributes->class([$linkClasses])); ?>
+
+    >
+        <!--[if BLOCK]><![endif]--><?php if($icon && $iconPosition === IconPosition::Before): ?>
+            <?php if (isset($component)) { $__componentOriginalbfc641e0710ce04e5fe02876ffc6f950 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbfc641e0710ce04e5fe02876ffc6f950 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament::components.icon','data' => ['alias' => $iconAlias,'icon' => $icon,'class' => $iconClasses,'style' => $iconStyles]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('filament::icon'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['alias' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($iconAlias),'icon' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($icon),'class' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($iconClasses),'style' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($iconStyles)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalbfc641e0710ce04e5fe02876ffc6f950)): ?>
+<?php $attributes = $__attributesOriginalbfc641e0710ce04e5fe02876ffc6f950; ?>
+<?php unset($__attributesOriginalbfc641e0710ce04e5fe02876ffc6f950); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalbfc641e0710ce04e5fe02876ffc6f950)): ?>
+<?php $component = $__componentOriginalbfc641e0710ce04e5fe02876ffc6f950; ?>
+<?php unset($__componentOriginalbfc641e0710ce04e5fe02876ffc6f950); ?>
+<?php endif; ?>
+        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+
+        <span class="<?php echo e($labelClasses); ?>" style="<?php echo e($labelStyles); ?>">
+            <?php echo e($slot); ?>
+
+        </span>
+
+        <!--[if BLOCK]><![endif]--><?php if($icon && $iconPosition === IconPosition::After): ?>
+            <?php if (isset($component)) { $__componentOriginalbfc641e0710ce04e5fe02876ffc6f950 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalbfc641e0710ce04e5fe02876ffc6f950 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament::components.icon','data' => ['alias' => $iconAlias,'icon' => $icon,'class' => $iconClasses,'style' => $iconStyles]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('filament::icon'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['alias' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($iconAlias),'icon' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($icon),'class' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($iconClasses),'style' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($iconStyles)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalbfc641e0710ce04e5fe02876ffc6f950)): ?>
+<?php $attributes = $__attributesOriginalbfc641e0710ce04e5fe02876ffc6f950; ?>
+<?php unset($__attributesOriginalbfc641e0710ce04e5fe02876ffc6f950); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalbfc641e0710ce04e5fe02876ffc6f950)): ?>
+<?php $component = $__componentOriginalbfc641e0710ce04e5fe02876ffc6f950; ?>
+<?php unset($__componentOriginalbfc641e0710ce04e5fe02876ffc6f950); ?>
+<?php endif; ?>
+        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+
+        <!--[if BLOCK]><![endif]--><?php if(filled($badge)): ?>
+            <div class="<?php echo e($badgeContainerClasses); ?>">
+                <?php if (isset($component)) { $__componentOriginal986dce9114ddce94a270ab00ce6c273d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal986dce9114ddce94a270ab00ce6c273d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament::components.badge','data' => ['color' => $badgeColor,'size' => $badgeSize]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('filament::badge'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['color' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($badgeColor),'size' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($badgeSize)]); ?>
+                    <?php echo e($badge); ?>
+
+                 <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal986dce9114ddce94a270ab00ce6c273d)): ?>
+<?php $attributes = $__attributesOriginal986dce9114ddce94a270ab00ce6c273d; ?>
+<?php unset($__attributesOriginal986dce9114ddce94a270ab00ce6c273d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal986dce9114ddce94a270ab00ce6c273d)): ?>
+<?php $component = $__componentOriginal986dce9114ddce94a270ab00ce6c273d; ?>
+<?php unset($__componentOriginal986dce9114ddce94a270ab00ce6c273d); ?>
+<?php endif; ?>
+            </div>
+        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+    </div><?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 <?php /**PATH C:\laragon\www\web-spd\spdvsc\vendor\filament\support\resources\views/components/link.blade.php ENDPATH**/ ?>

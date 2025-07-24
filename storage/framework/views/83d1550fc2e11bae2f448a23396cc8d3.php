@@ -127,7 +127,7 @@ unset($__defined_vars); ?>
             this.isOpen = false
 
             this.$refs.modalContainer.dispatchEvent(
-                new CustomEvent('modal-closed', { id: '<?php echo e($id); ?>' }),
+                new CustomEvent('modal-closed', { detail: { id: '<?php echo e($id); ?>' } }),
             )
         },
 
@@ -140,7 +140,7 @@ unset($__defined_vars); ?>
                 <?php endif; ?>
 
                 this.$refs.modalContainer.dispatchEvent(
-                    new CustomEvent('modal-opened', { id: '<?php echo e($id); ?>' }),
+                    new CustomEvent('modal-opened', { detail: { id: '<?php echo e($id); ?>' } }),
                 )
             })
         },
@@ -148,6 +148,7 @@ unset($__defined_vars); ?>
     <?php if($id): ?>
         x-on:<?php echo e($closeEventName); ?>.window="if ($event.detail.id === '<?php echo e($id); ?>') close()"
         x-on:<?php echo e($openEventName); ?>.window="if ($event.detail.id === '<?php echo e($id); ?>') open()"
+        data-fi-modal-id="<?php echo e($id); ?>"
     <?php endif; ?>
     x-trap.noscroll<?php echo e($autofocus ? '' : '.noautofocus'); ?>="isOpen"
     x-bind:class="{
@@ -232,6 +233,9 @@ unset($__defined_vars); ?>
                         x-transition:leave-start="scale-100 opacity-100"
                         x-transition:leave-end="scale-95 opacity-0"
                     <?php endif; ?>
+                    <?php if(filled($id)): ?>
+                        wire:key="<?php echo e(isset($this) ? "{$this->getId()}." : ''); ?>modal.<?php echo e($id); ?>.window"
+                    <?php endif; ?>
                     <?php echo e(($extraModalWindowAttributeBag ?? new \Illuminate\View\ComponentAttributeBag)->class([
                             'fi-modal-window pointer-events-auto relative row-start-2 flex w-full cursor-default flex-col bg-white shadow-xl ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10',
                             'fi-modal-slide-over-window ms-auto overflow-y-auto' => $slideOver,
@@ -270,6 +274,9 @@ unset($__defined_vars); ?>
                 >
                     <!--[if BLOCK]><![endif]--><?php if($heading || $header): ?>
                         <div
+                            <?php if(filled($id)): ?>
+                                wire:key="<?php echo e(isset($this) ? "{$this->getId()}." : ''); ?>modal.<?php echo e($id); ?>.header"
+                            <?php endif; ?>
                             class="<?php echo \Illuminate\Support\Arr::toCssClasses([
                                 'fi-modal-header flex px-6 pt-6',
                                 'pb-6' => (! $hasSlot) && (! $hasFooter),
@@ -447,6 +454,9 @@ unset($__defined_vars); ?>
 
                     <!--[if BLOCK]><![endif]--><?php if($hasSlot): ?>
                         <div
+                            <?php if(filled($id)): ?>
+                                wire:key="<?php echo e(isset($this) ? "{$this->getId()}." : ''); ?>modal.<?php echo e($id); ?>.content"
+                            <?php endif; ?>
                             class="<?php echo \Illuminate\Support\Arr::toCssClasses([
                                 'fi-modal-content flex flex-col gap-y-4 py-6',
                                 'flex-1' => ($width === MaxWidth::Screen) || $slideOver,
@@ -461,6 +471,9 @@ unset($__defined_vars); ?>
 
                     <!--[if BLOCK]><![endif]--><?php if($hasFooter): ?>
                         <div
+                            <?php if(filled($id)): ?>
+                                wire:key="<?php echo e(isset($this) ? "{$this->getId()}." : ''); ?>modal.<?php echo e($id); ?>.footer"
+                            <?php endif; ?>
                             class="<?php echo \Illuminate\Support\Arr::toCssClasses([
                                 'fi-modal-footer w-full',
                                 'pe-6 ps-[5.25rem]' => $hasIcon && ($alignment === Alignment::Start) && ($footerActionsAlignment !== Alignment::Center) && (! $stickyFooter),

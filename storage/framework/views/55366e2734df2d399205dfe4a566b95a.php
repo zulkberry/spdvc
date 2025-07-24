@@ -329,14 +329,14 @@
                     <!--[if BLOCK]><![endif]--><?php if($isLimitedListExpandable): ?>
                         <?php if (isset($component)) { $__componentOriginal549c94d872270b69c72bdf48cb183bc9 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal549c94d872270b69c72bdf48cb183bc9 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament::components.link','data' => ['color' => 'gray','tag' => 'button','xOn:click.prevent' => 'isLimited = false','xShow' => 'isLimited']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament::components.link','data' => ['color' => 'gray','tag' => 'div','xOn:click.prevent.stop' => 'isLimited = false','xShow' => 'isLimited']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('filament::link'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['color' => 'gray','tag' => 'button','x-on:click.prevent' => 'isLimited = false','x-show' => 'isLimited']); ?>
+<?php $component->withAttributes(['color' => 'gray','tag' => 'div','x-on:click.prevent.stop' => 'isLimited = false','x-show' => 'isLimited']); ?>
                             <?php echo e(trans_choice('filament-tables::table.columns.text.actions.expand_list', $limitedArrayStateCount)); ?>
 
                          <?php echo $__env->renderComponent(); ?>
@@ -352,14 +352,14 @@
 
                         <?php if (isset($component)) { $__componentOriginal549c94d872270b69c72bdf48cb183bc9 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal549c94d872270b69c72bdf48cb183bc9 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament::components.link','data' => ['color' => 'gray','tag' => 'button','xCloak' => true,'xOn:click.prevent' => 'isLimited = true','xShow' => '! isLimited']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'filament::components.link','data' => ['color' => 'gray','tag' => 'div','xCloak' => true,'xOn:click.prevent.stop' => 'isLimited = true','xShow' => '! isLimited']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('filament::link'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['color' => 'gray','tag' => 'button','x-cloak' => true,'x-on:click.prevent' => 'isLimited = true','x-show' => '! isLimited']); ?>
+<?php $component->withAttributes(['color' => 'gray','tag' => 'div','x-cloak' => true,'x-on:click.prevent.stop' => 'isLimited = true','x-show' => '! isLimited']); ?>
                             <?php echo e(trans_choice('filament-tables::table.columns.text.actions.collapse_list', $limitedArrayStateCount)); ?>
 
                          <?php echo $__env->renderComponent(); ?>

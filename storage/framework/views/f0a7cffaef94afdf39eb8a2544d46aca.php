@@ -83,7 +83,7 @@
             >
                 <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $limitedState; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $stateItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <img
-                        src="<?php echo e(filled($stateItem) ? $getImageUrl($stateItem) : $defaultImageUrl); ?>"
+                        src="<?php echo e(filled($stateItem) ? ($getImageUrl($stateItem) ?? $defaultImageUrl) : $defaultImageUrl); ?>"
                         <?php echo e($getExtraImgAttributeBag()
                                 ->class([
                                     'max-w-none object-cover object-center',
@@ -100,10 +100,6 @@
 
                 <!--[if BLOCK]><![endif]--><?php if($hasLimitedRemainingText && (! $isLimitedRemainingTextSeparate) && $isCircular): ?>
                     <div
-                        style="
-                            <?php if($height): ?> height: <?php echo e($height); ?>; <?php endif; ?>
-                            <?php if($width): ?> width: <?php echo e($width); ?>; <?php endif; ?>
-                        "
                         class="<?php echo \Illuminate\Support\Arr::toCssClasses([
                             'flex items-center justify-center bg-gray-100 font-medium text-gray-500 dark:bg-gray-800 dark:text-gray-400',
                             'rounded-full' => $isCircular,
